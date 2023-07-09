@@ -21,7 +21,22 @@ public class Board {
 	public int getColumns() {
 		return columns;
 	}
-
+	
+	public Piece removePiece(Position position) {
+		if(!PositionExists(position)) {
+			throw new BoardException("A posição passada não existe");
+		}
+		if(piece(position) == null) {
+			return null;
+		}
+		Piece aux = piece(position);
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
+				
+	}
+	
+	
 	public Piece piece(int row, int column) {
 		if(!PositionExists(row, column)) {
 			throw new BoardException("A posição passada não existe");
