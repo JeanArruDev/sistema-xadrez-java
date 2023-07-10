@@ -44,6 +44,12 @@ public class ChessMatch {
 		return capturedPiece;
 	}
 	
+	public boolean[][] possibleMoves(ChessPosition sourcePosition){
+		Position position = sourcePosition.toPosition();
+		validateSourcePosition(position);
+		return board.piece(position).possibleMoves();
+	}
+	
 	public void validateSourcePosition(Position position) {
 		if(!board.ThereIsAPiece(position)) {
 			throw new ChessException("Não tem peça na posição de origem");
